@@ -1,5 +1,5 @@
 {
-  "name": "razorpay",
+  "name": "node-razorpay",
   "version": "1.0.0",
   "description": "Integrating Razorpay Payment Gateway with Nodejs",
   "main": "index.js",

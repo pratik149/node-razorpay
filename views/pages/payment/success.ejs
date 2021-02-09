@@ -1,0 +1,30 @@
+<div class="row d-flex justify-content-center">
+	<div class="col-md-8">
+		<div class="card">
+			<h5 class="card-header">Payment Successful!</h5>
+
+			<div class="card-body">
+				<p class="card-text">Thank you for contributing to us. Uparwala tumhara bhala kare.</p>
+
+				<dl class="row mt-2">
+					<dt class="col-sm-3">Order ID</dt>
+					<dd class="col-sm-9" id="orderId"><%- paymentDetail.orderId %>  </dd>
+										
+					<dt class="col-sm-3">Transaction ID</dt>
+					<dd class="col-sm-9" id="orderId"><%- paymentDetail.paymentId %>  </dd>
+
+					<dt class="col-sm-3">Signature</dt>
+					<dd class="col-sm-9" id="orderId"><%- paymentDetail.signature %>  </dd>
+
+					<dt class="col-sm-3">Amount</dt>
+					<dd class="col-sm-9"><%- paymentDetail.amount/100 %> Rs. </dd>
+
+					<dt class="col-sm-3">Created at</dt>
+					<dd class="col-sm-9"><%- paymentDetail.createdAt %> </dd>
+				</dl>
+
+				<a href="/" type="button" class="btn btn-primary">Go Home</a>
+			</div>
+		</div>
+	</div>
+</div>

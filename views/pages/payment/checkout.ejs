@@ -1,0 +1,63 @@
+<div class="row d-flex justify-content-center">
+	<div class="col-sm-10 col-md-8 col-lg-5">
+		<div class="card">
+			<h5 class="card-header">Confirm Order</h5>
+
+			<div class="card-body">
+				<p class="card-text">Thank you for taking up this decision.</p>
+
+				<dl class="row mt-2">
+					<dt class="col-sm-3">Order ID</dt>
+					<dd class="col-sm-9" id="orderId"><%- paymentDetail.orderId %>  </dd>
+			
+					<dt class="col-sm-3">Currency</dt>
+					<dd class="col-sm-9"><%- paymentDetail.currency %>  </dd>
+										
+					<dt class="col-sm-3">Amount</dt>
+					<dd class="col-sm-9"><%- paymentDetail.amount/100 %> Rs. </dd>
+				</dl>
+
+				<button type="submit" class="btn btn-primary" onclick="checkout(event)">Checkout</button>
+			</div>
+		</div>
+		<form id="paymentVerifyForm" action="/payment/verify" method="POST">
+			<input name="razorpay_payment_id" type="hidden" id="razorpay_payment_id" />
+			<input name="razorpay_order_id" type="hidden" id="razorpay_order_id"/>
+			<input name="razorpay_signature" type="hidden" id="razorpay_signature"/>
+		</form>
+	</div>
+</div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+	function checkout(event) {
+		const orderId = '<%- JSON.stringify(paymentDetail.orderId) %>'
+		const options = {
+			"key": "rzp_test_qVCyEM6WgHM58p",
+			"currency": "INR",
+			"name": "Razor Tutorial",
+			"description": "Razor Test Transaction",
+			"image": "https://previews.123rf.com/images/subhanbaghirov/subhanbaghirov1605/subhanbaghirov160500087/56875269-vector-light-bulb-icon-with-concept-of-idea-brainstorming-idea-illustration-.jpg",
+			"order_id": JSON.parse(orderId),
+			"handler": function (response){
+				console.log(response)
+				document.getElementById('razorpay_payment_id').value=response.razorpay_payment_id;
+				document.getElementById('razorpay_order_id').value=response.razorpay_order_id;
+				document.getElementById('razorpay_signature').value=response.razorpay_signature;
+				document.getElementById("paymentVerifyForm").submit();
+			},
+			"modal": {
+				ondismiss: function() {
+					alert(`Payment Failed`)
+				}
+			},
+			"theme": {
+				"color": "#22527b"
+			}
+		};
+		console.log(options)
+		const razorpay = new Razorpay(options);
+		razorpay.open();
+		event.preventDefault();
+	}
+</script>

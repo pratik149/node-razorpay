@@ -1,25 +1,25 @@
 {
-  "name": "node-razorpay",
-  "version": "1.0.0",
-  "description": "Integrating Razorpay Payment Gateway with Nodejs",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
-  },
-  "author": "pratik",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "ejs": "^3.1.6",
-    "express": "^4.17.1",
-    "express-ejs-layouts": "^2.5.0",
-    "mongoose": "^5.11.15",
-    "nanoid": "^3.1.20",
-    "razorpay": "^2.0.6"
-  },
-  "devDependencies": {
-    "dotenv": "^8.2.0",
-    "nodemon": "^2.0.7"
-  }
+	"name": "node-razorpay",
+	"version": "1.0.0",
+	"description": "Integrating Razorpay Payment Gateway with Nodejs",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon app.js"
+	},
+	"author": "pratik",
+	"license": "ISC",
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"ejs": "^3.1.6",
+		"express": "^4.17.1",
+		"express-ejs-layouts": "^2.5.0",
+		"mongoose": "^5.11.15",
+		"nanoid": "^3.1.20",
+		"razorpay": "^2.0.6"
+	},
+	"devDependencies": {
+		"dotenv": "^8.2.0",
+		"nodemon": "^2.0.7"
+	}
 }

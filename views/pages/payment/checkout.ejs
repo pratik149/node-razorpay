@@ -31,19 +31,19 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
 	function checkout(event) {
+		const razorpayKeyId = '<%- razorpayKeyId %>'
 		const orderId = '<%- JSON.stringify(paymentDetail.orderId) %>'
 		const options = {
-			"key": "rzp_test_qVCyEM6WgHM58p",
+			"key": razorpayKeyId,
 			"currency": "INR",
 			"name": "Razor Tutorial",
 			"description": "Razor Test Transaction",
 			"image": "https://previews.123rf.com/images/subhanbaghirov/subhanbaghirov1605/subhanbaghirov160500087/56875269-vector-light-bulb-icon-with-concept-of-idea-brainstorming-idea-illustration-.jpg",
 			"order_id": JSON.parse(orderId),
 			"handler": function (response){
-				console.log(response)
-				document.getElementById('razorpay_payment_id').value=response.razorpay_payment_id;
-				document.getElementById('razorpay_order_id').value=response.razorpay_order_id;
-				document.getElementById('razorpay_signature').value=response.razorpay_signature;
+				document.getElementById('razorpay_payment_id').value= response.razorpay_payment_id;
+				document.getElementById('razorpay_order_id').value= response.razorpay_order_id;
+				document.getElementById('razorpay_signature').value= response.razorpay_signature;
 				document.getElementById("paymentVerifyForm").submit();
 			},
 			"modal": {
@@ -55,7 +55,6 @@
 				"color": "#22527b"
 			}
 		};
-		console.log(options)
 		const razorpay = new Razorpay(options);
 		razorpay.open();
 		event.preventDefault();

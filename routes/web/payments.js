@@ -35,6 +35,7 @@ router.post('/order', function(req, res, next) {
 	}
 	razorPayInstance.orders.create(params)
 	.then(async (response) => {
+		const razorpayKeyId = process.env.RAZORPAY_KEY_ID
 		// Save orderId and other payment details
 		const paymentDetail = new PaymentDetail({
 			orderId: response.id,
@@ -49,6 +50,7 @@ router.post('/order', function(req, res, next) {
 			await paymentDetail.save()
 			res.render('pages/payment/checkout', {
 				title: "Confirm Order",
+				razorpayKeyId: razorpayKeyId,
 				paymentDetail : paymentDetail
 			})
 		} catch (err) {
